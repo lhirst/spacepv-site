@@ -1,1 +1,43 @@
+backend:
+  name: github
+  repo: lhirst/spacepv-site
+  branch: main
 
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "news"
+    label: "News"
+    folder: "data/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "External Link", name: "link", widget: "string", required: false }
+
+  - name: "publications"
+    label: "Publications"
+    folder: "data/publications"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Authors", name: "authors", widget: "string" }
+      - { label: "Journal", name: "journal", widget: "string" }
+      - { label: "Year", name: "year", widget: "number" }
+      - { label: "DOI", name: "doi", widget: "string" }
+      - { label: "Summary", name: "summary", required: false, widget: "text" }
+
+  - name: "people"
+    label: "People"
+    folder: "data/people"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Research Area", name: "area", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: false }
